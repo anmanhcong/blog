@@ -13,7 +13,7 @@
              :per-page="limit"
              :current-page="page"
         >
-            <div class="col-4" v-for="post in list">
+            <div class="col-4" v-for="post in list.list">
                 <router-link :to="{
                     name: 'post',
                     query: post
@@ -27,29 +27,36 @@
 </template>
 
 <script>
-  // import {scrollTo, kebabify, prettyDate} from '../helper'
   import axios from 'axios';
 
   export default {
     name: 'blog-list',
     data() {
       return {
-        list: [],
+        list: {},
         transition: 'preview-appear',
         page: 1,
         limit:2
       }
     },
 
+    watch: {
+      page : function (){
+        axios
+          .get('http://localhost/blog_demo/posts/view?page='+this.page+'&limit=2')
+          .then(response => (this.list = response.data))
+      }
+    },
+
     mounted () {
       axios
-        .get('http://localhost/blog_demo/posts/view?page=' + this.page + '&limit=2')
+        .get('http://localhost/blog_demo/posts/view?page=1&limit=2')
         .then(response => (this.list = response.data))
     },
     computed: {
       rows() {
-        return this.list.length
-      }
+        return this.list.total
+      },
     }
   }
 </script>
