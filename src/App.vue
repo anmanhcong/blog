@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <notifications group="notify"/>
   </div>
 </template>
 
@@ -20,5 +21,15 @@
     margin-top: 60px;
   }
 
+  .vue-notification {
+    padding: 10px;
+    margin: 20px 20px 5px 5px;
+
+    font-size: 20px;
+
+    color: #ffffff;
+    background: #44A4FC;
+    border-left: 5px solid #187FE7;
+  }
   /*@import'~bootstrap/dist/css/bootstrap.css';*/
 </style>

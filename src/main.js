@@ -7,7 +7,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Notifications from 'vue-notification'
 
+Vue.use(Notifications)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
@@ -18,3 +20,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+

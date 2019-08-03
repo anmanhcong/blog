@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <blog-edit :post="post"></blog-edit>
-<!--            <button>Xóa bài viết</button>-->
+            <blog-delete :post_id="post.Post.id"/>
         </div>
         <div class="row">
             <div class="col-4">
@@ -26,7 +26,7 @@
 
   export default {
     name: 'blog-post',
-    components: { BlogEdit },
+    components: { BlogEdit, BlogDelete },
     data () {
       return {
         post: this.$route.query,

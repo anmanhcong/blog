@@ -71,6 +71,11 @@
       }
     },
     props: ['post'],
+    watch: {
+      status: function () {
+        this.$notify({ group: 'notify', text: this.status.message })
+      }
+    },
     methods: {
       editPost: function () {
         let formData = new FormData()

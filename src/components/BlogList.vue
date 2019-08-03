@@ -7,6 +7,7 @@
                 aria-controls="post"
         ></b-pagination>
         <p class="mt-3">Current Page: {{ page }}</p>
+        <blog-add @postWasAdded="status = $event"></blog-add>
         <div class="row"
              id="post"
              :items="list"
@@ -28,6 +29,7 @@
 
 <script>
   import axios from 'axios';
+  import BlogAdd from './post_actions/BlogAdd'
 
   export default {
     name: 'blog-list',
@@ -36,16 +38,19 @@
         list: {},
         transition: 'preview-appear',
         page: 1,
-        limit:2
+        limit:2,
+        status: {}
       }
     },
+
+    components: { BlogAdd },
 
     watch: {
       page : function (){
         axios
           .get('http://localhost/blog_demo/posts/view?page='+this.page+'&limit=2')
           .then(response => (this.list = response.data))
-      }
+      },
     },
 
     mounted () {

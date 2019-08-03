@@ -1,11 +1,13 @@
 <template>
-    <nav class="nav">
-        <h1 class="nav__title">
-            <router-link to="/">
-                <p>Blog Nghệ Thuật</p>
-            </router-link>
-        </h1>
-    </nav>
+    <div class="container">
+        <div class="home">
+            <h1 class="nav__title">
+                <router-link to="/">
+                    <p>Style Of Me</p>
+                </router-link>
+            </h1>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -16,3 +18,9 @@
       }
     }
 </script>
+
+<style scoped>
+    .nav__title {
+        text-align: center;
+    }
+</style>
