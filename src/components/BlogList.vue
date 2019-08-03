@@ -7,7 +7,7 @@
                 aria-controls="post"
         ></b-pagination>
         <p class="mt-3">Current Page: {{ page }}</p>
-        <blog-add @postWasAdded="status = $event"></blog-add>
+        <blog-add></blog-add>
         <div class="row"
              id="post"
              :items="list"
@@ -48,14 +48,14 @@
     watch: {
       page : function (){
         axios
-          .get('http://localhost/blog_demo/posts/view?page='+this.page+'&limit=2')
+          .get('http://localhost/blog_demo/posts/view?page='+this.page+'&limit=' + this.limit)
           .then(response => (this.list = response.data))
       },
     },
 
     mounted () {
       axios
-        .get('http://localhost/blog_demo/posts/view?page=1&limit=2')
+        .get('http://localhost/blog_demo/posts/view?page=1&limit=' + this.limit)
         .then(response => (this.list = response.data))
     },
     computed: {
